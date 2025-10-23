@@ -1,0 +1,117 @@
+<!-- academic-calendar.html (simplified) -->
+{% extends "base.html" %}
+
+{% block title %}Academic Calendar - St. Joseph's University{% endblock %}
+
+{% block header_class %}header-with-back{% endblock %}
+
+{% block back_button %}
+    <button class="back-button" onclick="goBack()" title="Go Back to Home">
+        ❮
+    </button>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/academic-calendar.css') }}">
+{% endblock %}
+
+{% block main_class %}page-content{% endblock %}
+
+{% block main_content %}
+    <h2><b>Academic Calendar</b></h2>
+    
+    <div class="year-selector">
+        <div class="form-group">
+            <label for="yearSelect">Select Academic Year:</label>
+            <select id="yearSelect">
+                <option value="">Select Year</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="admin-controls" id="adminCalendarControls">
+        <button onclick="showAddNoteForm()">+ Add New Note</button>
+    </div>
+    
+    <div id="calendarContainer" class="calendar-container"></div>
+{% endblock %}
+
+{% block page_modals %}
+    <div id="noteModal" class="modal">
+        <div class="modal-content note-modal-content">
+            <span class="close">&times;</span>
+            <div id="noteModalContent"></div>
+        </div>
+    </div>
+
+    <div id="noteFormModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="noteFormTitle">Add New Note</h2>
+            <div class="note-form-container">
+                <form id="noteForm">
+                    <input type="hidden" id="noteId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="noteYear">Year:</label>
+                            <select id="noteYear" required>
+                                <option value="">Select Year</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="noteMonth">Month:</label>
+                            <select id="noteMonth" required>
+                                <option value="">Select Month</option>
+                                <option value="0">January</option>
+                                <option value="1">February</option>
+                                <option value="2">March</option>
+                                <option value="3">April</option>
+                                <option value="4">May</option>
+                                <option value="5">June</option>
+                                <option value="6">July</option>
+                                <option value="7">August</option>
+                                <option value="8">September</option>
+                                <option value="9">October</option>
+                                <option value="10">November</option>
+                                <option value="11">December</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="noteDate">Date:</label>
+                            <input type="number" id="noteDate" min="1" max="31" required placeholder="Day">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="noteText">Note/Event Description:</label>
+                        <textarea id="noteText" rows="4" required placeholder="Enter note or event description"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">Save Note</button>
+                        <button type="button" class="cancel-btn" onclick="closeNoteFormModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/academic-calendar.js') }}"></script>
+{% endblock %}

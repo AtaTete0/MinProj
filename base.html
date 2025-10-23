@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}St. Joseph's University Event Management{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content {% block header_class %}{% endblock %}">
+                {% block back_button %}{% endblock %}
+                
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="St. Joseph's University Logo" class="logo">
+                    </div>
+                    <div class="logo-text">
+                        <h1>St. Joseph University Event Management</h1>
+                    </div>
+                </div>
+                <div class="admin-login">
+                    <button id="adminLoginBtn">Admin Login</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="{% block main_class %}{% endblock %}">
+                {% block main_content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <span class="copyright">© 2025 St. Joseph University. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <button class="feedback-btn" onclick="showFeedbackModal()">💬</button>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFeedbackModal()">&times;</span>
+            <h2>Share Your Feedback</h2>
+            <div class="feedback-form-container">
+                <form id="feedbackForm" class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedbackType">Type of Feedback:</label>
+                        <div class="feedback-type">
+                            <label>
+                                <input type="radio" name="feedbackType" value="suggestion" checked>
+                                <span>💡 Suggestion</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="feedbackType" value="bug">
+                                <span>🐛 Bug Report</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="feedbackType" value="compliment">
+                                <span>⭐ Compliment</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="feedbackType" value="other">
+                                <span>📝 Other</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackRating">How would you rate your experience?</label>
+                        <div class="rating-stars">
+                            <span class="star" onclick="setRating(1)">★</span>
+                            <span class="star" onclick="setRating(2)">★</span>
+                            <span class="star" onclick="setRating(3)">★</span>
+                            <span class="star" onclick="setRating(4)">★</span>
+                            <span class="star" onclick="setRating(5)">★</span>
+                        </div>
+                        <input type="hidden" id="feedbackRating" value="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackMessage">Your Feedback:</label>
+                        <textarea id="feedbackMessage" required placeholder="Please share your thoughts, suggestions, or report any issues you've encountered..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackEmail">Email (optional - if you'd like us to follow up):</label>
+                        <input type="email" id="feedbackEmail" placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Submit Feedback</button>
+                        <button type="button" class="cancel-btn" onclick="closeFeedbackModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="password">Administrator Password:</label>
+                    <input type="password" id="password" required placeholder="Enter admin password">
+                </div>
+                <button type="submit">Login to Admin Panel</button>
+            </form>
+        </div>
+    </div>
+
+    {% block page_modals %}{% endblock %}
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

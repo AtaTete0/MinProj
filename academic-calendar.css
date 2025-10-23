@@ -1,0 +1,615 @@
+.year-selector {
+    background: rgba(248, 249, 250, 0.8);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.year-selector .form-group {
+    margin-bottom: 0;
+    max-width: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.year-selector label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.year-selector select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 14px;
+    background: white;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.year-selector select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+#adminCalendarControls {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(248, 249, 250, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#adminCalendarControls button {
+    background: linear-gradient(135deg, #1a3a5f, #3498db);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+    font-size: 1rem;
+}
+
+#adminCalendarControls button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+}
+
+.calendar-container {
+    margin-bottom: 2rem;
+}
+
+.calendar-months-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.month-calendar {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    margin-bottom: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.month-calendar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.month-header {
+    background: linear-gradient(135deg, #1a3a5f, #3498db);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #e9ecef;
+    border: 1px solid #e9ecef;
+}
+
+.calendar-day-header {
+    background: #f8f9fa;
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #dee2e6;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-day {
+    background: white;
+    padding: 0.5rem 0.3rem;
+    min-height: 80px;
+    height: 80px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.calendar-day:hover {
+    background: #f8f9fa;
+    z-index: 1;
+}
+
+.calendar-day.empty {
+    background: #f8f9fa;
+    cursor: default;
+}
+
+.calendar-day.has-note {
+    background: #e8f4fd;
+    border-left: 3px solid #3498db;
+}
+
+.calendar-day.has-note:hover {
+    background: #d4edf9;
+}
+
+.day-number {
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: #2c3e50;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
+}
+
+.note-preview {
+    font-size: 0.65rem;
+    color: #6c757d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: rgba(52, 152, 219, 0.1);
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-top: auto;
+    flex-shrink: 0;
+    text-align: center;
+    max-height: 16px;
+    line-height: 1.2;
+}
+
+/* Ensure consistent cell sizes */
+.calendar-day,
+.calendar-day.empty,
+.calendar-day.has-note {
+    min-height: 80px;
+    height: 80px;
+    max-height: 80px;
+}
+
+/* Responsive for calendar */
+@media (max-width: 1024px) {
+    .calendar-months-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-day {
+        padding: 0.4rem 0.2rem;
+        min-height: 70px;
+        height: 70px;
+        max-height: 70px;
+    }
+    
+    .calendar-day-header {
+        padding: 0.6rem 0.3rem;
+        font-size: 0.75rem;
+        min-height: 40px;
+    }
+    
+    .month-header {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    .day-number {
+        font-size: 0.8rem;
+    }
+    
+    .note-preview {
+        font-size: 0.6rem;
+        padding: 1px 3px;
+        max-height: 14px;
+    }
+    
+    .calendar-day,
+    .calendar-day.empty,
+    .calendar-day.has-note {
+        min-height: 70px;
+        height: 70px;
+        max-height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-day {
+        padding: 0.3rem 0.1rem;
+        min-height: 60px;
+        height: 60px;
+        max-height: 60px;
+    }
+    
+    .calendar-day-header {
+        padding: 0.5rem 0.2rem;
+        font-size: 0.7rem;
+        min-height: 35px;
+    }
+    
+    .day-number {
+        font-size: 0.75rem;
+    }
+    
+    .note-preview {
+        font-size: 0.55rem;
+        max-height: 12px;
+    }
+    
+    .calendar-day,
+    .calendar-day.empty,
+    .calendar-day.has-note {
+        min-height: 60px;
+        height: 60px;
+        max-height: 60px;
+    }
+    
+    .year-selector {
+        padding: 1rem;
+    }
+    
+    #adminCalendarControls {
+        padding: 1rem;
+    }
+}
+#adminCalendarControls button {
+    background: linear-gradient(135deg, #1a3a5f, #3498db);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+    font-size: 1rem;
+}
+
+#adminCalendarControls button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+}
+
+.calendar-container {
+    margin-bottom: 2rem;
+}
+
+.calendar-months-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.month-calendar {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    margin-bottom: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.month-calendar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.month-header {
+    background: linear-gradient(135deg, #1a3a5f, #3498db);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #e9ecef;
+    border: 1px solid #e9ecef;
+}
+
+.calendar-day-header {
+    background: #f8f9fa;
+    padding: 0.8rem 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.calendar-day {
+    background: white;
+    padding: 0.6rem 0.4rem;
+    min-height: 80px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #f8f9fa;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-day:hover {
+    background: #f8f9fa;
+    z-index: 1;
+}
+
+.calendar-day.empty {
+    background: #f8f9fa;
+    cursor: default;
+}
+
+.calendar-day.has-note {
+    background: #e8f4fd;
+    border-left: 3px solid #3498db;
+}
+
+.calendar-day.has-note:hover {
+    background: #d4edf9;
+}
+
+.day-number {
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: #2c3e50;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.note-preview {
+    font-size: 0.65rem;
+    color: #6c757d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: rgba(52, 152, 219, 0.1);
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-top: 0.2rem;
+    text-align: center;
+    max-height: 16px;
+    line-height: 1.2;
+}
+
+.note-modal-content {
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.note-modal-content h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.note-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+    margin-bottom: 1rem;
+}
+
+.note-item p {
+    margin-bottom: 1rem;
+    color: #6c757d;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.note-item .note-date {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.note-item .note-full-text {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+#noteFormModal .modal-content {
+    max-width: 500px;
+}
+
+.note-form-container {
+    padding: 1rem 0;
+}
+
+.note-form-container .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.note-form-container label {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 0.9rem;
+}
+
+.note-form-container input,
+.note-form-container select,
+.note-form-container textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.note-form-container input:focus,
+.note-form-container select:focus,
+.note-form-container textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+.note-form-container textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+.note-form-container .form-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.note-form-container .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.note-form-container .form-actions button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.note-form-container .save-btn {
+    background: linear-gradient(135deg, #27ae60, #219653);
+    color: white;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.note-form-container .save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+}
+
+.note-form-container .cancel-btn {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    color: white;
+    box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+}
+
+.note-form-container .cancel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+}
+@media (max-width: 1024px) {
+    .calendar-months-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-day {
+        padding: 0.5rem 0.3rem;
+        min-height: 70px;
+    }
+    
+    .calendar-day-header {
+        padding: 0.6rem 0.3rem;
+        font-size: 0.75rem;
+    }
+    
+    .month-header {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+    
+    .day-number {
+        font-size: 0.8rem;
+    }
+    
+    .note-preview {
+        font-size: 0.6rem;
+        padding: 1px 3px;
+        max-height: 14px;
+    }
+    
+    .note-form-container .form-row {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .note-form-container .form-actions {
+        flex-direction: column;
+    }
+    
+    .note-form-container .form-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-day {
+        min-height: 65px;
+        padding: 0.4rem 0.2rem;
+    }
+    
+    .note-preview {
+        font-size: 0.55rem;
+        max-height: 12px;
+    }
+    
+    .year-selector {
+        padding: 1rem;
+    }
+    
+    #adminCalendarControls {
+        padding: 1rem;
+    }
+}

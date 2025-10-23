@@ -1,0 +1,65 @@
+<!-- class-routine.html (simplified) -->
+{% extends "base.html" %}
+
+{% block title %}Class Routine - St. Joseph's University{% endblock %}
+
+{% block header_class %}header-with-back{% endblock %}
+
+{% block back_button %}
+    <button class="back-button" onclick="goBack()" title="Go Back to Home">
+        ❮
+    </button>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/class-routine.css') }}">
+{% endblock %}
+
+{% block main_class %}page-content{% endblock %}
+
+{% block main_content %}
+    <h2><b>Class Routine</b></h2>
+    
+    <div class="routine-selector">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="departmentSelect">Department:</label>
+                <select id="departmentSelect">
+                    <option value="">Select Department</option>
+                    <option value="BTech">BTech</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Economic">Economic</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Sociology">Sociology</option>
+                    <option value="Psychology">Psychology</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="semesterSelect">Semester:</label>
+                <select id="semesterSelect">
+                    <option value="">Select Semester</option>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5">Semester 5</option>
+                    <option value="6">Semester 6</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="admin-controls" id="adminRoutineControls">
+        <button onclick="addRow()">+ Add Time Slot</button>
+        <button onclick="addColumn()">+ Add Day</button>
+        <button onclick="resetRoutine()">🔄 Reset Routine</button>
+    </div>
+    
+    <div id="routineContainer" class="routine-container"></div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/class-routine.js') }}"></script>
+{% endblock %}

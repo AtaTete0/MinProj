@@ -1,0 +1,369 @@
+.routine-selector {
+    background: rgba(248, 249, 250, 0.8);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+.routine-selector .form-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.routine-selector .form-group {
+    margin-bottom: 0;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.routine-selector label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.routine-selector select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 14px;
+    background: white;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.routine-selector select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+#adminRoutineControls {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(248, 249, 250, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+#adminRoutineControls button {
+    background: linear-gradient(135deg, #1a3a5f, #3498db);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    font-size: 0.9rem;
+}
+
+#adminRoutineControls button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+#adminRoutineControls button:last-child {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+#adminRoutineControls button:last-child:hover {
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+}
+
+.routine-container {
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.routine-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    min-width: 800px;
+}
+
+.routine-table th, .routine-table td {
+    border: 1px solid #e9ecef;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.routine-table th {
+    background: linear-gradient(135deg, #1a3a5f, #3498db);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.routine-table td {
+    position: relative;
+    min-width: 140px;
+    height: 90px;
+    vertical-align: top;
+    background: white;
+}
+
+.routine-table td.editable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.routine-table td.editable:hover {
+    background: #f8f9fa;
+    transform: scale(1.02);
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.routine-table td.editing {
+    background: #e8f4fd;
+    padding: 0.5rem;
+}
+
+
+.routine-table td:empty::before {
+    content: '';
+    display: inline-block;
+    height: 1px;
+}
+
+.no-routine-message {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(248, 249, 250, 0.8);
+    border-radius: 12px;
+    color: #6c757d;
+}
+
+.no-routine-message p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.time-slot {
+    font-weight: 700;
+    background: #f8f9fa;
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+.class-info {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    text-align: left;
+}
+
+.class-info .subject {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.2rem;
+    font-size: 0.85rem;
+}
+
+.class-info .room {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-bottom: 0.1rem;
+}
+
+.class-info .teacher {
+    font-size: 0.75rem;
+    color: #888;
+    font-style: italic;
+}
+
+.routine-table input, .routine-table textarea {
+    width: 100%;
+    border: 1px solid #dee2e6;
+    background: white;
+    text-align: center;
+    font-size: 0.8rem;
+    outline: none;
+    padding: 4px 6px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.routine-table input:focus, .routine-table textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.routine-table textarea {
+    resize: vertical;
+    min-height: 35px;
+    font-family: inherit;
+    text-align: left;
+}
+
+.routine-table .edit-controls {
+    margin-top: 6px;
+    text-align: center;
+}
+
+.routine-table .save-btn {
+    background: linear-gradient(135deg, #27ae60, #219653);
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin-right: 4px;
+    transition: all 0.3s ease;
+}
+
+.routine-table .save-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+}
+
+.routine-table .cancel-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.routine-table .cancel-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+.delete-row, .delete-col {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    cursor: pointer;
+    position: absolute;
+    display: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+.delete-row {
+    top: 6px;
+    right: 6px;
+}
+
+.delete-col {
+    top: 6px;
+    right: 6px;
+}
+
+.routine-table th:hover .delete-col,
+.routine-table tr:hover .delete-row {
+    display: block;
+}
+
+.delete-row:hover, .delete-col:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+}
+
+.empty-cell {
+    color: #adb5bd;
+    font-style: italic;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .routine-selector .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    #adminRoutineControls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #adminRoutineControls button {
+        width: 200px;
+    }
+    
+    .routine-container {
+        border-radius: 10px;
+    }
+    
+    .routine-table th, .routine-table td {
+        padding: 0.8rem 0.5rem;
+    }
+    
+    .routine-table td {
+        min-width: 120px;
+        height: 80px;
+    }
+    
+    .class-info {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .routine-table th, .routine-table td {
+        padding: 0.6rem 0.3rem;
+    }
+    
+    .routine-table td {
+        min-width: 100px;
+        height: 70px;
+    }
+    
+    .time-slot {
+        font-size: 0.8rem;
+    }
+    
+    .class-info .subject {
+        font-size: 0.8rem;
+    }
+    
+    .routine-selector {
+        padding: 1rem;
+    }
+    
+    #adminRoutineControls {
+        padding: 1rem;
+    }
+    
+    #adminRoutineControls button {
+        width: 100%;
+    }
+}

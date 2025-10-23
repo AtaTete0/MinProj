@@ -1,0 +1,87 @@
+<!-- venue-booking.html (simplified) -->
+{% extends "base.html" %}
+
+{% block title %}Venue Booking - St. Joseph's University{% endblock %}
+
+{% block header_class %}header-with-back{% endblock %}
+
+{% block back_button %}
+    <button class="back-button" onclick="goBack()" title="Go Back to Home">
+        ❮
+    </button>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/venue-booking.css') }}">
+{% endblock %}
+
+{% block main_class %}page-content{% endblock %}
+
+{% block main_content %}
+    <h2><b>Venue Booking</b></h2>
+    
+    <div class="booking-form">
+        <h3>Book a Venue</h3>
+        <form id="venueBookingForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <select id="department" required>
+                        <option value="">Select Department</option>
+                        <option value="BTech">BTech</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Economic">Economic</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Sociology">Sociology</option>
+                        <option value="Psychology">Psychology</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventName">Event Name:</label>
+                    <input type="text" id="eventName" required placeholder="Enter event name">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="startTime">Start Time:</label>
+                    <input type="time" id="startTime" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="endTime">End Time:</label>
+                    <input type="time" id="endTime" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Preferred Location:</label>
+                <select id="location" required>
+                    <option value="">Select Location</option>
+                    <option value="Seminar 1">Seminar Hall 1</option>
+                    <option value="Seminar 2">Seminar Hall 2</option>
+                    <option value="Seminar 3">Seminar Hall 3</option>
+                    <option value="Auditorium">Main Auditorium</option>
+                </select>
+            </div>
+            
+            <button type="submit">Check Availability & Book</button>
+        </form>
+    </div>
+    
+    <div class="bookings-list">
+        <h3>Current Bookings</h3>
+        <div id="bookingsContainer"></div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='js/venue-booking.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!-- index.html (simplified) -->
+{% extends "base.html" %}
+
+{% block title %}St. Joseph's University Event Management{% endblock %}
+
+{% block main_class %}main-container{% endblock %}
+
+{% block main_content %}
+    <div class="welcome-section">
+        <h2>Welcome to SJU Events</h2>
+        <p><b>View & manage university events, venues, academic calendars, and class schedules, all with simple administrative controls.</b></p>
+    </div>
+    
+    <div class="features-grid">
+        <div class="feature-card" onclick="navigateTo('/venue-booking')">
+            <div class="feature-icon"><i class="fas fa-building"></i></div>
+            <h2>Venue Booking</h2>
+            <p>Reserve SJU venues for events with real-time availability tracking</p>
+        </div>
+        <div class="feature-card" onclick="navigateTo('/department-events')">
+            <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+            <h2>Department Events</h2>
+            <p>Explore and manage events across all SJU departments</p>
+        </div>
+        <div class="feature-card" onclick="navigateTo('/academic-calendar')">
+            <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+            <h2>Academic Calendar</h2>
+            <p>Access for systematic academic schedules and important dates</p>
+        </div>
+        <div class="feature-card" onclick="navigateTo('/class-routine')">
+            <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+            <h2>Class Routine</h2>
+            <p>View and manage class timetables for the departments</p>
+        </div>
+    </div>
+{% endblock %}
